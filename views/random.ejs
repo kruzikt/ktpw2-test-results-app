@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random</title>
+</head>
+<body>
+    <h1>This is <%= "first".toUpperCase() %> to page with ejs.</h1>
+
+    <p>The server generated a new number: <%= num%>.</p>
+
+    <% if (num % 2 === 0) { %>
+       <p>The number is even.</p>
+    <% } else { %>
+       <p>The number is odd.</p>
+    <% } %>
+
+</body>
+</html>

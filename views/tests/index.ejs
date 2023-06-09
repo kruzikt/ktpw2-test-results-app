@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head") %>
+
+  <body class="d-flex flex-column vh-100">
+    <%- include("../partials/navbar") %>
+    <main class="container mt-5">
+      <h1>List of all tests</h1>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Test Title</th>
+              <th scope="col">Test Description</th>
+              <th scope="col">Result</th>
+              <th scope="col">Tested by</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for (let c of tests) { %>
+            <tr>
+              <th scope="row">1</th>
+              <td><%= c.title %></td>
+              <td><%- c.description %></td>
+              <td>New</td>
+              <td><%= c.author.username %></td>
+              <td><a class="btn btn-primary" href="/tests/<%= c._id%>">details</a</td>
+                <% if (currentUser && currentUser._id.equals(c.author._id)) { %>    
+                <a class="btn btn-info m-2" href="/tests/<%= c._id%>/edit">Edit test</a>
+                  <form action="/tests/<%= c._id%>?_method=DELETE" method="post">
+                    <button class="btn btn-danger m-2">Delete test</button>
+                  </form>
+            </tr>
+            <% } } %>
+          </tbody>
+        </table>
+    </main>
+    <%- include("../partials/footer") %>
+  </body>
+</html>
